@@ -1,18 +1,16 @@
-pipeline{
-
+pipeline {
     agent any
 
-    stages{
-        stage ('pull from git'){
-            steps{
-            sh 'echo "hello word"'
-
+    stages {
+        stage('pull from git') {
+            steps {
+                sh 'echo "hello word"'
+            }
+        }
+        stage('docker build') {  
+            steps {
+                sh 'echo "yaniv git"'
+            }
         }
     }
-    stages ('docker build'){
-        steps {
-            sh 'echo "yaniv git"'
-        }
-    }
-
-}}
+}
