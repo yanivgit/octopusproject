@@ -5,24 +5,25 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
-        stage('build image') {
+        stage('connect to git') {
             steps {
                 script {
-                    
-                    echo "DockerHub Credentials: ${DOCKERHUB_CREDENTIALS}"
+                    git 'https://github.com/yanivgit/octopusproject.git'
                 }
             }
         }
-        stage('login to dockerhub') {  
+        stage('build image') {  
             steps {
-                sh 'echo "yaniv git"'
+                sh "echo \$DOCKERHUB_CREDENTIALS_PSW | docker login -u \$DOCKERHUB_CREDENTIALS_USR --password-stdin"
+                sh "docker build -t \$REPO ."
             }
         }
         stage('push to dockerhub') {
             steps {
-                sh 'echo "hello word"'
+                sh "docker push \$REPO"  
             }
         }
     }
 }
+
 
