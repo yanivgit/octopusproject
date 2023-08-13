@@ -1,13 +1,16 @@
 pipeline {
     agent any
-    environment{
-        REPO=gitmanyaniv/gitmanrepo
-         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    environment {
+        REPO = 'gitmanyaniv/gitmanrepo'
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
-        stage('build image ') {
+        stage('build image') {
             steps {
-                sh 'echo "$(DOCKERHUB_CREDENTIALS )"'
+                script {
+                    
+                    echo "DockerHub Credentials: ${DOCKERHUB_CREDENTIALS}"
+                }
             }
         }
         stage('login to dockerhub') {  
@@ -22,3 +25,4 @@ pipeline {
         }
     }
 }
+
