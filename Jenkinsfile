@@ -1,15 +1,23 @@
 pipeline {
     agent any
-
+    environment{
+        REPO=gitmanyaniv/gitmanrepo
+         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    }
     stages {
-        stage('pull from git') {
+        stage('build image ') {
             steps {
-                sh 'echo "hello word"'
+                sh 'echo "$(DOCKERHUB_CREDENTIALS )"'
             }
         }
-        stage('docker build') {  
+        stage('login to dockerhub') {  
             steps {
                 sh 'echo "yaniv git"'
+            }
+        }
+        stage('push to dockerhub') {
+            steps {
+                sh 'echo "hello word"'
             }
         }
     }
