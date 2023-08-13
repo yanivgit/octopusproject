@@ -5,13 +5,12 @@ const app = express();
 const port = 3000;
 
 // MongoDB connection URL
-const mongoUrl = 'mongodb://localhost:27017/mydatabase';
-
+const mongoUrl = 'mongodb://mongo-container:27017/mydatabase';
 // Create a Mongoose schema
 const itemSchema = new mongoose.Schema({
   order: Number,
-  fruit: String,   // Change from 'name' to 'fruit'
-  qty: Number,     // Change from 'number' to 'qty'
+  fruit: String,   
+  qty: Number,     
   rating: Number
 });
 
