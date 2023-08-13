@@ -4,13 +4,13 @@ pipeline{
 
     stages{
         stage ('pull from git'){
-            step{
+            steps{
             sh 'echo "hello word"'
 
         }
     }
-    stage ('docker build'){
-        step {
+    stages ('docker build'){
+        steps {
             sh 'echo "yaniv git"'
         }
     }
