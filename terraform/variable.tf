@@ -1,4 +1,4 @@
-variable "docker_network" {
+variable "dockernetwork" {
     type = string
-    default = "mynetwork"
+    default = "appnetwork"
 }
