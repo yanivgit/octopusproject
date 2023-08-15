@@ -1,12 +1,25 @@
 version: '3'
 services:
-  mongodb:
-    image: mongo
+  mongo:
+    image: mongo:latest
+    container_name: my-mongo
     ports:
-      - 27017
-  my-node-app:
-    image: my-node-app
+      - "27017:27017"
+    networks:
+      - my-network
+
+  app:
+    build: .
+    container_name: my-app
     ports:
-      - 3000
+      - "3000:3000"
+    networks:
+      - my-network
+    depends_on:
+      - mongo
+
+networks:
+  my-network:
+    driver: bridge
       
    

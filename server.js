@@ -5,7 +5,8 @@ const app = express();
 const port = 3000;
 
 // MongoDB connection URL
-const mongoUrl = 'mongodb://mongo-container:27017/mydatabase';
+const mongoUrl = 'mongodb://mongo:27017/mydatabase';
+
 // Create a Mongoose schema
 const itemSchema = new mongoose.Schema({
   order: Number,
