@@ -41,16 +41,6 @@ pipeline {
            }
         }
     }
-        post{
-            always{
-                sh 'docker image prune -af'
-                sh 'docker context use default'
-                sh 'docker logout'
-
-            }
-        }
-
-    
 }
 
 
