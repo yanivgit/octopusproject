@@ -40,6 +40,7 @@ pipeline {
 
            }
         }
+    }
         post{
             always{
                 sh 'docker image prune -af'
@@ -49,7 +50,7 @@ pipeline {
             }
         }
 
-    }
+    
 }
 
 
