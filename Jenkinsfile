@@ -8,7 +8,7 @@ pipeline {
         stage('clone from git') {
             steps {
                 
-                    git 'https://github.com/yanivgit/octopusproject/tree/master'
+                    git 'https://github.com/yanivgit/octopusproject.git'
                 
             }
         }
@@ -28,6 +28,7 @@ pipeline {
             steps {
                 sh "echo \$DOCKERHUB_CREDENTIALS_PSW | docker login -u \$DOCKERHUB_CREDENTIALS_USR --password-stdin"
                 sh "docker push \$REPO"  
+                sh 'docker logout'
             }
         }
         
