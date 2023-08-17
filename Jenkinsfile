@@ -8,7 +8,7 @@ pipeline {
         stage('clone from git') {
             steps {
                 
-                    git 'https://github.com/yanivgit/octopusproject.git'
+                    git 'https://github.com/yanivgit/octopusproject/tree/master'
                 
             }
         }
