@@ -14,6 +14,7 @@ pipeline {
         }
         stage('build image') {  
             steps {
+                sh 'su ubuntu'
                 sh "docker build -t \$REPO ."
             }
         }
