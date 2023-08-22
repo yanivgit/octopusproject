@@ -14,7 +14,6 @@ pipeline {
         }
         stage('build image') {  
             steps {
-                sh 'su ubuntu'
                 sh "docker build -t \$REPO ."
             }
         }
@@ -38,7 +37,16 @@ pipeline {
                 sh 'docker context use remote'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker pull $REPO'
-                sh 'docker compose -f docker-compose.yml up -d'
+                sh 'docker-compose -f docker-compose.yml up -d'
+
+           }
+        }
+        stage('Deployment2'){
+            steps{
+                sh 'docker context use remote2'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker pull $REPO'
+                sh 'docker-compose -f docker-compose.yml up -d'
 
            }
         }
